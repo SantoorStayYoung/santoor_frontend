@@ -1,0 +1,33 @@
+{
+  "name": "santoor_frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@vimeo/player": "^2.13.0",
+    "axios": "^0.20.0",
+    "lodash": "^4.17.20",
+    "next": "9.5.2",
+    "next-redux-wrapper": "^6.0.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-dropzone": "^11.1.0",
+    "react-redux": "^7.2.1",
+    "react-share": "^4.3.0",
+    "react-slick": "^0.27.11",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.26.10",
+    "slick-carousel": "^1.8.1",
+    "video-react": "^0.14.1"
+  }
+}
