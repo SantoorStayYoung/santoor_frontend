@@ -1,5 +1,5 @@
 module.exports = {
-    API_URI:"https://centrestage-api-new.santoorstayyoung.com/", 
+    API_URI:"https://centrestage-api-new.santoorstayyoung.com", 
     MOBILE_BREAKPOINT: 768,
     TOKEN_VAR_NAME: 'dgdfzhbrgshjsetahegh',
     DONT_LOGIN_REDIRECT: ['admin'],
