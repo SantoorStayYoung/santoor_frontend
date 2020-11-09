@@ -150,7 +150,324 @@ class Home extends React.Component {
           <title>Santoor Center Stage 2</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <p>Undergoing maintenance. Will be back soon.</p>
+        <div className="slider position-relative">
+          <div className="slide-left slide-control">
+            <span className="arrow-left" onClick={()=>this.slider.current.slickPrev()}>
+                <FontAwesomeIcon icon={faChevronLeft} className="fa" />
+            </span>
+          </div>
+          <div className="slide-right slide-control">
+            <span className="arrow-right" onClick={()=>this.slider.current.slickNext()}>
+                <FontAwesomeIcon icon={faChevronRight} className="fa" />
+            </span>
+          </div>
+          <div className="mnemonic-wrapper">
+                <div className="mnemonic">
+                    <img src="/images/mnemonic-desktop.png" />
+                    <div className="orange-box text-white">
+                      <span className="bold main-text">Celebrating the spirit of talented Indian women</span>
+                      <div className="text-center">
+                      {this.props.auth.token?
+                        <div style={{marginTop:"2rem"}}>
+                          <Link href="/participant-dashboard"><a className="btn btn-primary btn-larger margin-auto dashboard">GET STARTED</a></Link>
+                        </div>
+                        :
+                        <button className="btn btn-primary btn-larger margin-auto" style={{marginTop:"2rem"}} onClick={()=>this.props.showAuth(true,"register")}>REGISTER NOW</button>
+                      }
+                      </div>
+                    </div>
+                </div>
+          </div>
+          <Slider {...settings} ref={this.slider}>
+            <div className="slide slide3">
+            </div>
+            <div className="slide slide1">
+            </div>
+            <div className="slide slide2">
+            </div>
+          </Slider>
+        </div>
+        <div className="section-2 padded-content position-relative">
+          <div className="logo-and-text">
+            <img src="/images/SantoorLogoCropped.png" className="l"/>
+            <div className="text">
+              <div className="text1 purple light">Show us</div>
+              <div className="text2 purple bold">your talent</div>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div className="talents">
+            <div className="row no-gutters">
+              <div className="col-md">
+                <div className="talent talent-1">
+                  <img src="/images/talent-1.png" />
+                  <div className="text purple bold">Play an instrument</div>
+                </div>
+              </div>
+              <div className="col-md">
+                <div className="talent talent-2">
+                  <img src="/images/talent-2.png" />
+                  <div className="text purple bold">Sing us a song</div>
+                </div>
+              </div>
+              <div className="col-md">
+                <div className="talent talent-3">
+                  <img src="/images/talent-3.png" />
+                  <div className="text purple bold">
+                    Dance to your own rhythm
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="talent-text-section additional-padding purple text-center">
+              <h2>Unleash your talent</h2>
+              <div style={{marginTop:"2.5rem"}}>
+                <p>
+                  This year has been a challenging one for you and for many
+                  women, juggling between work, family and personal time.
+                  Despite the pressures, we at Santoor, continue to be amazed by
+                  your wonderful spirit – of how you’ve taken this time, and
+                  nurtured your skills and talent. </p>
+                  <p>Santoor Centre Stage 2 offers
+                  you the chance to shine in the spotlight and show the world
+                  the talent you’ve honed. Just share a video to show us any
+                  talent that can be judged by seeing it or hearing it. Stand a
+                  chance to win big!</p>
+                  <div style={{marginTop:"5rem"}} className="text-center">
+                    {this.props.auth.token?
+                      <Link href="/participant-dashboard"><a className="btn btn-primary btn-larger margin-auto dashboard">GET STARTED</a></Link>
+                      :
+                      <button type="button" className="btn btn-primary margin-auto btn-larger" onClick={()=>this.props.showAuth(true,"register")}>REGISTER NOW</button>
+                    }
+                  </div>
+              </div>
+            </div> 
+          </div>
+          <div className="five-things">
+              <h2 className="uppercase purple">5 THINGS TO KNOW BEFORE YOU ENTER THE CHALLENGE</h2>
+              <div className="image-and-text">
+                <div className="row no-gutters">
+                  <div className="col-md-6">
+                    <div className="five-things-image">
+                        <img src="/images/five-things.png" className="width-100"/>
+                    </div>
+                  </div>
+                  <div className="col-md-6" style={{display: "flex",flexDirection:"column",justifyContent: "center"}}>
+                    <div className="five-things-text purple">
+                        <p>Contest is open for women of 18 years and above.</p> 
+                        <p>Submit a video (max. 90 seconds) showing us your best talent.</p>
+                        <p>Ensure that the talent is something that can be judged by seeing it or hearing it.</p>
+                        <p>Get your family and friends to vote for you to reach the Top 15 most-voted videos and be a part of the Finalists.</p>
+                        <p>Our panel of Judges will pick three winners from the Finalists.</p> 
+                        <p>They will also select three videos from the rest of the entries for the Judges’ Choice Awards.</p> 
+                        <p>Like/follow the Santoor <a href="https://www.facebook.com/SantoorStayYoung/" target="_blank">Facebook</a> and <a href="https://www.instagram.com/santoorstayyoung" target="_blank">Instagram</a> pages for contest updates.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <img src="/images/howtotop.png" className="how-to-top-img" />
+        </div>
+        <div className="how-to padded-content additional-padding text-center">
+              <h2 className="uppercase purple">How to participate</h2>
+              <div className="orange how-to-sub-heading">We’ve put together a few simple tips on how to shoot and upload your videos. Good luck!</div>
+              <div className="how-to-video">
+                <VideoEmbed videoid="464469350" />
+              </div>
+              {/* <div className="how-to-stats purple">
+                  <div className="row no-gutters">
+                    <div className="col-md-4">
+                      <div className="stat">
+                        <div className="stat-title light">Uploads</div>
+                        <div className="stat-count bold">30,010</div>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="stat">
+                        <div className="stat-title light">Total Views</div>
+                        <div className="stat-count bold">2,18,652</div>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className="stat">
+                        <div className="stat-title light">Days Left</div>
+                        <div className="stat-count bold">17</div>
+                      </div>
+                    </div>
+                  </div>
+              </div> */}
+        </div>
+        <div className="get-votes">
+          <div className="large-heading text-center show-only-mobile-block bold purple get-most-votes">Get the <br/>most votes</div>
+          <div className="row no-gutters">
+            <div className="col-md-3 col-5 text-right">
+              <div className="mobile-image">
+                <img src="/images/Mobile1.png" className="max-width-100"/>
+              </div>
+            </div>
+            <div className="col-md-5 col-6">
+              <div className="middle">
+                <div className="large-heading bold purple show-only-desktop-block" style={{lineHeight:1}}>Get the<br/>most<br/>votes</div>
+                <div className="middle-text orange">
+                  <p>Upload your talent video and share the link with your friends and family.</p>
+                  <p>Get them to vote for you, because our Finalists will be chosen from the Top 15 most-voted videos.</p>
+                  <div className="uppercase purple bold color-inherit-a" style={{marginTop:"2rem"}}><Link href="/participant-dashboard"><a>Share your talent upload link</a></Link></div>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="right show-only-desktop-block">
+                  <div className="get-vote-image">
+                    <img src="/images/GetVote.png" className="max-width-100"/>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bottom padded-content position-relative">
+            <div className="large-heading bold text-white text-center">Meet our judges</div>
+            <div className="judges">
+              <div className="row no-gutters">
+                <div className="col-md">
+                  <div className="judge">
+                    <div className="-modal-wrapper">
+                      <img src="/images/nicole1.png" className="width-100 -modal"/>
+                      {/* <img src="/images/PlayButton1.svg"  className="play-btn" /> */}
+                    </div>
+                    <div className="judge-name purple bold text-center">
+                      Nicole Concessao
+                    </div>
+                    <div className="judge-designation text-white bold text-center">
+                      Dancer, Co-founder Team Naach
+                    </div>
+                    <div className="judge-explore text-center">
+                      <button className="btn btn-primary margin-auto" onClick={()=>this.setState({showNicole:true})}>Explore</button>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md">
+                  <div className="judge">
+                    <div className="-modal-wrapper">
+                      <img src="/images/sonal1.png" className="width-100 judge-image"/>
+                      {/* <img src="/images/PlayButton1.svg"  className="play-btn" /> */}
+                    </div>
+                    <div className="judge-name purple bold text-center">
+                      Sonal Devraj
+                    </div>
+                    <div className="judge-designation text-white bold text-center">
+                      Dancer, Co-founder Team Naach
+                    </div>
+                    <div className="judge-explore text-center">
+                      <button className="btn btn-primary margin-auto" onClick={()=>this.setState({showSonal:true})}>Explore</button>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md">
+                  <div className="judge">
+                    <div className="judge-image-wrapper">
+                      <img src="/images/swetha1.png" className="width-100 judge-image"/>
+                      {/* <img src="/images/PlayButton1.svg"  className="play-btn" /> */}
+                    </div>
+                    <div className="judge-name purple bold text-center">
+                      Swetha Naidu 
+                    </div>
+                    <div className="judge-designation text-white bold text-center">
+                      Singer, Dancer, <br/>YouTuber
+                    </div>
+                    <div className="judge-explore text-center">
+                      <button className="btn btn-primary margin-auto" onClick={()=>this.setState({showSwetha:true})}>Explore</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="logo-and-text">
+              <img src="/images/SantoorLogoCropped.png" />
+              <div className="text text-right win-big">
+                <div className="text1 purple light">WIN BIG</div>
+                <div className="text2 purple bold">with Santoor</div>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div className="show-only-mobile-block text-center" style={{marginTop:"2rem"}}>
+                    <div className="gold-line"></div>
+                    <div className="text-white" style={{marginTop:"3rem"}}>
+                        Our Judges will select 3 Winners from the Finalists (Top 15 most-voted entries) and give away Gift Vouchers.
+                    </div>
+                    <div className="bold text-white" style={{marginTop:"3rem"}}>
+                      1st Prize: Rs. 50,000<br />
+                      2nd Prize: Rs. 40,000<br />
+                      3rd Prize: Rs. 30,000
+                    </div>
+                    <div className="light text-white" style={{marginTop:"3rem",marginBottom:"3rem"}}>
+                        All Finalists get Gift Vouchers worth Rs. 5,000.
+                    </div>
+                    <div className="gold-line"></div>
+            </div>
+            <div className="lady-and-text">
+              <div className="lady">
+                  <img src="/images/lady.png" className="width-100" />
+              </div>
+              <div className="text text-center">
+                <div className="show-only-desktop-block">
+                    <div className="gold-line"></div>
+                    <div className="text-white" style={{marginTop:"3rem"}}>
+                        Our Judges will select 3 Winners from the Finalists (Top 15 most-voted entries) and give away Gift Vouchers.
+                    </div>
+                    <div className="bold text-white" style={{marginTop:"3rem"}}>
+                      1st Prize: Rs. 50,000<br />
+                      2nd Prize: Rs. 40,000<br />
+                      3rd Prize: Rs. 30,000
+                    </div>
+                    <div className="light text-white" style={{marginTop:"3rem",marginBottom:"3rem"}}>
+                        All Finalists get Gift Vouchers worth Rs. 5,000.
+                    </div>
+                    <div className="gold-line"></div>
+                </div>
+                <div className="bold purple additional-text">
+                  In addition to the above, the Judges will pick one winner each from all the entries submitted, for the Judges’ Choice Awards. These Winners will get Gift Vouchers worth Rs. 15,000 each.
+                </div>
+                <div className="text-center">
+                {this.props.auth.token?
+                  <Link href="/participant-dashboard"><a className="btn btn-primary btn-larger margin-auto dashboard">GET STARTED</a></Link>
+                  :
+                  <button type="button" className="btn btn-primary margin-auto btn-larger" onClick={()=>this.props.showAuth(true,"register")}>REGISTER NOW</button>
+                }
+                </div>
+              </div>
+            </div>
+            {this.state.latestVideos.length > 0 &&
+            <>
+              <div className="latest-videos-gallery position-relative">
+                <h1 className="purple text-center" style={{marginBottom:"5rem"}}>TRENDING VIDEOS</h1>
+                <Slider {...latestVideosSliderSettings} ref={this.latestVideosSlider}>
+                  {this.state.latestVideos.map(video=>{
+                      return (
+                        <div className="latest-video">
+                            <VideoEmbed videoid={video.videoid} />
+                            <VideoInfo video={video} />
+                        </div>
+                      )
+                  })}
+                </Slider>
+                <div className="slide-left slide-control">
+                    <span className="arrow-left" onClick={()=>this.latestVideosSlider.current.slickPrev()}>
+                        <FontAwesomeIcon icon={faChevronLeft} className="fa" />
+                    </span>
+                </div>
+                <div className="slide-right slide-control">
+                    <span className="arrow-right" onClick={()=>this.latestVideosSlider.current.slickNext()}>
+                        <FontAwesomeIcon icon={faChevronRight} className="fa" />
+                    </span>
+                </div>
+              </div>
+              <div className="text-center" style={{marginTop:"7.5rem"}}>
+                  <Link href="/videos"><a className="btn btn-primary btn-larger margin-auto">Explore All</a></Link>
+              </div>
+            </>
+            }
+            <img src="/images/footer-top.png" className="footer-top-img" />
+        </div>
         <style jsx>{`
           .votes-heading{
             margin-top: 1.5rem;
