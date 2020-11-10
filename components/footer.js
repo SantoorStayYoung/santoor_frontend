@@ -71,9 +71,6 @@ export default function Footer() {
                   <a>Terms &amp; Conditions</a>
                 </Link>
               </li>
-              <li>
-                <a>Privacy Policy</a>
-              </li>
               <li onClick={() => showModal(true)}>
                 <span className="cursor-pointer a">
                   Having trouble? Tell us
