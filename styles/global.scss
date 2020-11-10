@@ -363,6 +363,37 @@ a.btn:hover{
   margin-left: 25%;
   margin-bottom: 2rem;
 }
+.pagination{
+  margin: 3rem 0 0 0;
+  text-align: right;
+  padding-right: 3rem;
+}
+.pagination ul{
+  list-style:none;
+}
+.pagination ul li {
+  display:inline-block;
+}
+.pagination ul li a,.pagination ul li .a{
+  padding:1rem;
+  color: #bdbdbd;
+  text-decoration: none;
+}
+.pagination ul li.current a,.pagination ul li.current .a {
+  color: #000000;
+}
+
+.pagination ul li:first-child{
+  border-left:1px solid #000000;
+  border-right:1px solid #000000;
+  border-top:1px solid #000000;
+  border-bottom:1px solid #000000;
+}
+.pagination ul li{
+  border-right:1px solid #000000;
+  border-top:1px solid #000000;
+  border-bottom:1px solid #000000;
+}
 @media only screen and (max-width:768px){
   .inline-element-desktop{
     display:block;

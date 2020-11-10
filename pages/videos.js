@@ -7,6 +7,8 @@ import Layout from '../components/layout'
 import VideoInfo from '../components/videoInfo'
 function Videos(props){
     const [videos,setVideos] = useState([])
+    const [totalPage,setTotalPage] = useState(0)
+    const [pageNumber,setPageNumber] = useState(1)
     function fetchVideos(){
         props.showFixedLoader(true)
         fetch(`${API_URI}/api/dashboard/all_videos`, {
@@ -14,14 +16,15 @@ function Videos(props){
             headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify({pageNumber: 1,nPerPage: 200,order: "vote"})
+            body:JSON.stringify({pageNumber,nPerPage: 200,order: "vote"})
           })
           .then(res=>res.json())
           .then(result=>{
               if(result.status=="OK"){
-                  console.log('setting videos')
-                  console.log(result.videos.data)
+                  setTotalPage(result.videos.totalPage)
                   setVideos(result.videos.data)
+                  document.body.scrollTop = 0
+                  document.documentElement.scrollTop = 0
               }
               props.showFixedLoader(false)
           }).catch(err=>{
@@ -106,6 +109,29 @@ function Videos(props){
             )
         }
     }
+    function goToPage(n){
+        setPageNumber(n)
+    }
+    function renderPagination(){
+        let items = []
+        for(let i=1;i<=totalPage;i++){
+          items.push(
+            <li onClick={()=>goToPage(i)} className={i==pageNumber?"current":""} key={`page_${i}`}>
+              <span className="a">{i}</span>
+            </li>)
+          }
+        return (
+            <>
+          <div>Page:</div>
+          <ul>
+            {items.map(item=>item)}
+          </ul>
+          </>
+        )
+    }
+    useEffect(() => {
+        fetchVideos()
+     }, [pageNumber]);
     useEffect(()=>{
         fetchVideos()
     },[])
@@ -114,17 +140,35 @@ function Videos(props){
         <Layout page="videos" navColor="solid" navPosition="relative">
             <div className="videos-page-wrapper">
                 {videos.length > 0 &&
-                    <div className="videos">
-                        <div className="container-fluid">
-                            {renderVideos()}
+                    <>
+                        <div className="showing container-fluid">
+                            <div className="row no-gutters">
+                                <div className="col-6">
+                                    <div className="page">Showing page {pageNumber} of {totalPage}</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div className="videos">
+                            <div className="container-fluid">
+                                {renderVideos()}
+                            </div>
+                        </div>
+                        <div className="pagination">
+                            {totalPage > 1 &&
+                                renderPagination()
+                            }
+                        </div>
+                    </>
                 }
             </div>
             <style jsx>{`
+                .showing{
+                    padding-top:3rem;
+                }
                 .videos-page-wrapper{
                     min-height:100vh;
                     background: url(/images/topbg.png);
+                    padding-bottom:3rem;
                 }
             `}</style>
         </Layout>
