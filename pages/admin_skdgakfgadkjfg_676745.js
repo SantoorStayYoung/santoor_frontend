@@ -93,6 +93,7 @@ function Video(props){
                 <VideoEmbed videoid={props.video.videoid} />
             </div>
             <div>Votes: {props.video.totalVote}</div>
+            {props.video.users_details[0].email}
             <div className="show-details" onClick={()=>showDetails(!detailsVisible)} >Show options and details{detailsVisible?"-":"+"}</div>
             {deleting && 
                 <div>deleting..</div>
