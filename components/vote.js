@@ -7,7 +7,7 @@ import {API_URI} from '../config'
 class Vote extends Component {
     constructor(props){
         super(props)
-        this.state = {confirmingVote:false,invalidConfirmationCode:false,voteConfirmed:false,confirmVoteError:false,phone:'',phoneError:true,phoneTouched:false,success:false,loading:false,serverError:false,serverErrorMessage:'',pendingResends:null,waitingTime:null,otpExpiry:null,otpExpired:false,resendLimitReached:false,resendShow:false,code:''}
+        this.state = {confirmingVote:false,invalidConfirmationCode:false,voteConfirmed:false,confirmVoteError:false,phone:'',phoneError:true,phoneTouched:false,success:false,loading:false,serverError:false,serverErrorMessage:'',pendingResends:null,waitingTime:null,otpExpiry:null,otpExpired:false,resendLimitReached:false,resendShow:false,code:'',lastDatePassed:false}
         this.otpInterval = null
         this.resendShowTimer = null
     }
@@ -93,6 +93,8 @@ class Vote extends Component {
                 this.setState({resendLimitReached:true})
             } else if(result.status=="vote_error"){
                 this.setState({alreadVoted:true})
+            } else if(result.status=="last_date_passed"){
+                this.setState({lastDatePassed:true})
             }
             this.setState({loading:false})
         }).catch(err=>{
@@ -129,6 +131,9 @@ class Vote extends Component {
                                 </div>
                                 {this.state.alreadVoted && 
                                     <div className="error">You have already voted for this video.</div>
+                                }
+                                {this.state.lastDatePassed && 
+                                    <div className="error">The last date for voting has already passed. You cannot vote anymore.</div>
                                 }
                                 {this.state.serverError && 
                                     <div className="error">{this.state.serverErrorMessage}</div>
