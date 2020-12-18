@@ -187,6 +187,10 @@ class Home extends React.Component {
             </div>
           </Slider>
         </div>
+        <div className="winner-banners">
+          <img src="/images/image0.png" className="width-100" />
+          <img src="/images/image1.png" className="width-100" />
+        </div>
         <div className="section-2 padded-content position-relative">
           <div className="logo-and-text">
             <img src="/images/SantoorLogoCropped.png" className="l"/>
